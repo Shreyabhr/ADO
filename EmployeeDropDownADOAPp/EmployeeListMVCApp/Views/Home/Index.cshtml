@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/MasterTemplate.cshtml";
+    @model EmployeeListMVCApp.Models.DropDownView
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Dname, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.DropDownListFor(m => m.DNo, ViewBag.Departments as SelectList, "Select Department")
+        </div>
+
+    </div>
+    <input type="submit" value="View" onclick="location.href='@Url.Action("Display", "Home")'" />
+}
+
+
+@if (ViewBag.Employe != null)
+{
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    EmpName
+                </th>
+                <th>
+                    Job
+                </th>
+
+            </tr>
+
+            @foreach (var item in ViewBag.Employe)
+            {
+                <tr>
+                    <td>
+                        @item.ENAME
+                    </td>
+                    <td>
+                        @item.JOB
+                    </td>
+
+
+                </tr>
+
+
+            }
+
+
+        </table>
+    </div>
+
+}
+
+
